@@ -5,11 +5,10 @@ import requests
 
 from flask import Flask, request
 
-from citieslist2 import CITIES
 from messages import get_message, search_keyword
 
 token = os.environ.get('ACCESS_TOKEN')
-api_key = os.environ.get('WEATHER_API_KEY')
+
 app = Flask(__name__)
 
 
@@ -58,112 +57,6 @@ def send_text(sender, text):
 
 def send_message(payload):
     requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + token, json=payload)
-
-
-def send_weather_info(sender, **kwargs):
-    latitude = kwargs.pop('latitude', None)
-    longitude = kwargs.pop('longitude', None)
-    city_name = kwargs.pop('city_name', None)
-
-    if latitude and longitude:
-        query = 'lat={}&lon={}'.format(latitude, longitude)
-    elif city_name:
-        query = 'q={}'.format(city_name.title())
-
-    url = 'http://api.openweathermap.org/data/2.5/weather?' \
-          '{}&appid={}&units={}&lang={}'.format(query,
-                                                api_key,
-                                                'metric',
-                                                'en')
-
-    url1 = 'http://api.openweathermap.org/data/2.5/weather?' \
-          '{}&appid={}&units={}&lang={}'.format(query,
-                                                api_key,
-                                                'metric',
-                                                'en')                                             
-
-    r = requests.get(url1)
-    response = r.json()
-
-    print(response)
-
-    if 'cod' in response:
-        if response['cod'] != 200:
-            return 'error'
-
-    name = response['name']
-    weather = response['main']
-    wind = response['wind']
-
-    elements1 = [{
-        'title': name,
-        'subtitle': 'Temperature: {} in Degrees'.format(str(weather['temp']).replace('.',',')),
-        'image_url': 'https://cdn-images-1.medium.com/max/800/1*LkbHjhacSRDNDzupX7pgEQ.jpeg'
-            }]
-
-    temp_text = str(weather['temp'])
-    temp_float = float(temp_text)
-    
-    elements = [{
-        'title': name,
-        'subtitle': 'Temperature: {} degrees'.format(str(weather['temp'])),
-        'image_url': 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-clouds-icon.png'
-        }]
-    
-    if temp_float > 20.00:
-        elements = [{
-        'title': name,
-        'subtitle': 'Temperature: {} degrees'.format(str(weather['temp'])),
-        'image_url': 'http://icons.iconarchive.com/icons/icons-land/weather/256/Sunny-icon.png'
-        }]
-    
-    elif temp_float < 10.00:
-        elements = [{
-        'title': name,
-        'subtitle': 'Temperature: {} degrees'.format(str(weather['temp'])),
-        'image_url': 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-clouds-night-icon.png'
-        }]
-
-    
-    
-    for info in response['weather']:
-        description = info['description'].capitalize()
-        #description = "Other details"
-        icon = info['icon']
-
-        weather_data = 'Humidity: {}%\n' \
-                       'Pressure: {}\n' \
-                       'Wind Speed: {}'.format(weather['humidity'],
-                                                          weather['pressure'],
-                                                          wind['speed'])
-
-        if 'visibility' in response:
-            weather_data = '{}\n Visibility: {}'.format(weather_data, response['visibility'])
-
-        elements.append({
-            'title': description,
-            'subtitle': weather_data,
-            'image_url': 'http://openweathermap.org/img/w/{}.png'.format(icon)
-        })
-
-    payload = send_attachment(sender,
-                              'template',
-                              {
-                                  "template_type": "list",
-                                  "top_element_style": "large",
-                                  "elements": elements,
-                                  "buttons": [
-                                      {
-                                          "title": "Weather",
-                                          "type": "postback",
-                                          "payload": "do_it_again"
-                                      }
-                                    
-                                  ]
-                              })
-
-    send_message(payload)
-    return None
 
 
 @app.route('/', methods=['GET', 'POST'])
