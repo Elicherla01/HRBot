@@ -7,12 +7,6 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-from pymessenger.bot import Bot
-
-app = Flask(__name__)
-
-
-
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -90,4 +84,3 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 if __name__ == '__main__':
     app.run(debug=True)
-    #app.run(port=5003, debug=True) # to run at port 5003
