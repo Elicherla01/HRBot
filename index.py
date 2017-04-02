@@ -7,6 +7,8 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+token = os.environ.get('ACCESS_TOKEN')
+
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -53,28 +55,43 @@ def webhook():
     return "ok", 200
 
 
-def send_message(recipient_id, message_text):
 
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
-    params = {
-        "access_token": os.environ["ACCESS_TOKEN"]
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-        "message": {
-            "text": message_text
-        }
-    })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
+    
+## Ravi start
+def send_hr_info(sender, **kwargs):
+    
+    elements = [{
+        'title': 'this is test',
+        'subtitle': 'Temperature',
+        'image_url': 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-clouds-icon.png'
+        }]
+    
+    payload = send_attachment(sender,
+                              'template',
+                              {
+                                  "template_type": "list",
+                                  "top_element_style": "large",
+                                  "elements": elements,
+                                  "buttons": [
+                                      {
+                                          "title": "This is test",
+                                          "type": "postback",
+                                          "payload": "do_it_again"
+                                      }
+                                  ]
+                              })
+
+    send_message(payload)
+    return None
+
+## Ravi end
+
+def send_message(payload):
+    requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + token, json=payload)
+
+    
+
 
 
 def log(message):  # simple wrapper for logging to stdout on heroku
