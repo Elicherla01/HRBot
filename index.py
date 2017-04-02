@@ -58,6 +58,9 @@ def webhook():
             data = json.loads(request.data.decode())
             sender = data['entry'][0]['messaging'][0]['sender']['id']
 
+            message = "This is echo"
+            send_message(message)
+            
             print(data)
 
             if 'message' in data['entry'][0]['messaging'][0]:
