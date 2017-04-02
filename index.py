@@ -12,37 +12,6 @@ token = os.environ.get('ACCESS_TOKEN')
 app = Flask(__name__)
 
 
-def location_quick_reply(sender, text=None):
-    if not text:
-        text = get_message('location-button')
-    return {
-        "recipient": {
-            "id": sender
-        },
-        "message": {
-            "text": text,
-            "quick_replies": [
-                {
-                    "content_type": "location",
-                }
-            ]
-        }
-    }
-
-
-def send_attachment(sender, type, payload):
-    return {
-        "recipient": {
-            "id": sender
-        },
-        "message": {
-            "attachment": {
-                "type": type,
-                "payload": payload,
-            }
-        }
-    }
-
 # Send quick replies
 def send_quick_replies(sender, type, payload):
     return {
