@@ -107,43 +107,15 @@ def webhook():
                     return 'Ok'
 
                 # Resend the location button
-                if payload == 'do_it_again':
-                    payload = location_quick_reply(sender)
-                    send_message(payload)
+                if payload == 'PICK_ONE':
+                    message = send_text(sender, get_message('greetings'))
+                    send_message(message)
+                
+                if payload == 'PICK_TWO':
+                    message = send_text(sender, get_message('error'))
+                    send_message(message)
 
-
-            if 'attachments' in message:
-                if 'payload' in message['attachments'][0]:
-                    if 'coordinates' in message['attachments'][0]['payload']:
-                        location = message['attachments'][0]['payload']['coordinates']
-                        latitude = location['lat']
-                        longitude = location['long']
-
-                        send_weather_info(sender, latitude=latitude, longitude=longitude)
-
-                        if _return == 'error':
-                            message = send_text(sender, get_message('error'))
-                            send_message(message)
-                        
-                            payload = location_quick_reply(sender)
-                            send_message(payload)
-            else:
-                text = message['text']
-
-                for city in CITIES:
-                    if text.lower() in city:
-                        _return = send_weather_info(sender, city_name=text)
-
-                        if _return == 'error':
-                            message = send_text(sender, get_message('error'))
-                            send_message(message)
-
-                            # Send location button
-                            payload = location_quick_reply(sender)
-                            send_message(payload)
-
-                        return 'Ok'
-
+                    
                 # If text not in city list...
                 chat_message = search_keyword(text)
 
@@ -154,13 +126,7 @@ def webhook():
                 else:
                     message = send_text(sender, get_message('greetings'))
                     send_message(message)
-                    
-                    #message = send_text(sender, get_message('not-a-city'))
-                    #send_message(message)
-
-                # Send location button
-                payload = location_quick_reply(sender)
-                send_message(payload)
+                  
         except Exception as e:
             print(traceback.format_exc())
     elif request.method == 'GET':
