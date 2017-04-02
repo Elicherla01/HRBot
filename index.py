@@ -43,6 +43,29 @@ def send_attachment(sender, type, payload):
         }
     }
 
+# Send quick replies
+def send_quick_replies(sender, type, payload):
+    return {
+        "recipient": {
+            "id": sender
+        },
+        "message":{
+             "text":"Pick a color:",
+             "quick_replies":[
+                {
+                    "content_type":"text",
+                    "title":"Red",
+                    "payload":"PICK_ONE"
+                },
+                {
+                    "content_type":"text",
+                    "title":"Green",
+                    "payload":"PICK_TWO"
+                }
+                ]
+                }
+            }
+
 
 def send_text(sender, text):
     return {
