@@ -93,7 +93,7 @@ chat_keywords['thanks'] = [
 chat_keywords['criteria'] = [
     'What is the criteria?',
     'Can you tell me criteria?',
-    'Can you please tell me criteria?,
+    'Can you please tell me criteria?',
     'criteria please',
     'criteria',
     'What is the criteria',
