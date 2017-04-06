@@ -98,7 +98,7 @@ chat_keywords['criteria'] = [
     'criteria',
     'What is the criteria',
     'Can you tell me criteria',
-    'Can you please tell me criteria,
+    'Can you please tell me criteria',
     
 ]
 
