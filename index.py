@@ -59,31 +59,7 @@ def webhook():
 
     
 ## Ravi start
-def send_hr_info(sender, **kwargs):
-    
-    elements = [{
-        'title': 'this is test',
-        'subtitle': 'Temperature',
-        'image_url': 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Status-weather-clouds-icon.png'
-        }]
-    
-    payload = send_attachment(sender,
-                              'template',
-                              {
-                                  "template_type": "list",
-                                  "top_element_style": "large",
-                                  "elements": elements,
-                                  "buttons": [
-                                      {
-                                          "title": "This is test",
-                                          "type": "postback",
-                                          "payload": "do_it_again"
-                                      }
-                                  ]
-                              })
 
-    send_message(payload)
-    return None
 
 ## Ravi end
 
