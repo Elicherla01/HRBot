@@ -44,7 +44,7 @@ chat_responses['good-bye'] = [
 ]
 
 chat_responses['criteria'] = [
-    'All colleagues are eligible to apply for roles posted in OJP. Manager endorsement is required to support application. Initially to manage the scale of engineering and infrastructure SDE I and SE I roles, we will be prioritising applications from PSE colleagues. Eventually it will be open to all colleagues.',
+    'All colleagues are eligible to apply for roles posted in OJP. Manager endorsement is required to support application',
     
 ]
 
