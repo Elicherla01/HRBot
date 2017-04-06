@@ -3,8 +3,8 @@ import random
 
 chat_responses = {}
 
-chat_responses['not-a-city'] = [
-    'Unfortuantely, this city is not on my list. I will add it soon. Can you please try one more?',
+chat_responses['i_do_not_know'] = [
+    'Unfortuantely, I did not understand',
 ]
 
 chat_responses['error'] = [
