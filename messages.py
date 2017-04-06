@@ -43,6 +43,11 @@ chat_responses['good-bye'] = [
     'Bye bye 8)',
 ]
 
+chat_responses['criteria'] = [
+    'All colleagues are eligible to apply for roles posted in OJP. Manager endorsement is required to support application. Initially to manage the scale of engineering and infrastructure SDE I and SE I roles, we will be prioritising applications from PSE colleagues. Eventually it will be open to all colleagues.',
+    
+]
+
 
 def get_message(response_type):
     """
@@ -78,12 +83,24 @@ chat_keywords['good-bye'] = [
 
 ]
 
+
 chat_keywords['thanks'] = [
     'Thank you',
     'See you',
     'Thanks',
 ]
 
+chat_keywords['criteria'] = [
+    'What is the criteria?',
+    'Can you tell me criteria?',
+    'Can you please tell me criteria?,
+    'criteria please,
+    'criteria',
+    'What is the criteria',
+    'Can you tell me criteria',
+    'Can you please tell me criteria,
+    
+]
 
 def search_keyword(raw_text):
     """
