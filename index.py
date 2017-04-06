@@ -113,10 +113,10 @@ def webhook():
 
                 if chat_message:
                     # if found keyword, reply with chat stuff
-                    message = send_text(sender, get_message('greetings'))
+                    message = send_text(sender, chat_message)
                     send_message(message)
                 else:
-                    message = send_text(sender, get_message('greetings'))
+                    message = send_text(sender, get_message('i_do_not_know'))
                     send_message(message)
 
         except Exception as e:
