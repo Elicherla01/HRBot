@@ -24,12 +24,10 @@ chat_responses['location-button'] = [
 ]
 
 chat_responses['greetings'] = [
-    'Hi, how are you? Let us see how the weather is around?',
-    'Hi! You want to know the climate?',
-    'Hello! Want to know the temperature of some place?',
-    'Hi! Is it raining there?',
-    'Hi! Want to know weather information?',
-    'Hi! Does it rain or shine outside?',
+    'Hi, how are you?',
+    'Hi! How can i help you?',
+    'Hi! how is your day?',
+
 ]
 
 chat_responses['thanks'] = [
