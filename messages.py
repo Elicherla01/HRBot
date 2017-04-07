@@ -86,6 +86,7 @@ chat_keywords['thanks'] = [
     'Thank you',
     'See you',
     'Thanks',
+    'thank you',
     'thanks',
 ]
 
