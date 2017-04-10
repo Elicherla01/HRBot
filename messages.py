@@ -21,9 +21,8 @@ chat_responses['no_answer'] = [
 
 
 chat_responses['greetings'] = [
-    'Hi, how are you?',
-    'Hi! How can i help you?',
-    'Hi! how is your day?',
+    'Hi, how are you? I can help you with OJP',
+    'Hi! how is your day? I can help you with OJP',
 
 ]
 
