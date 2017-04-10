@@ -66,7 +66,9 @@ chat_keywords['greetings'] = [
     'good morning',
     'good day',
     'good night',
-    'good'
+    'good',
+   
+    
 ]
 
 chat_keywords['good-bye'] = [
@@ -85,6 +87,8 @@ chat_keywords['thanks'] = [
     'Thanks',
     'thank you',
     'thanks',
+     'great',
+     'fine',
 ]
 
 chat_keywords['criteria'] = [
@@ -96,8 +100,10 @@ chat_keywords['criteria'] = [
     'What is the criteria',
     'Can you tell me criteria',
     'Can you please tell me criteria',
+    'OJP',
+    'ojp',
     
-]
+   ]
 
 def search_keyword(raw_text):
     """
