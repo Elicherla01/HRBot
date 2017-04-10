@@ -4,7 +4,7 @@ import random
 chat_responses = {}
 
 chat_responses['i_do_not_know'] = [
-    'Unfortuantely, I did not understand',
+    'Unfortuantely, I did not understand. Can you please try again? At this time i can help with OJP.',
 ]
 
 chat_responses['error'] = [
@@ -18,10 +18,7 @@ chat_responses['no_answer'] = [
     'I did not take ... it was bad... ;(',
 ]
 
-chat_responses['location-button'] = [
-    'Enter a city or click the button below to find out the weather. :)',
-    'Type the name of a city or use the button below...',
-]
+
 
 chat_responses['greetings'] = [
     'Hi, how are you?',
