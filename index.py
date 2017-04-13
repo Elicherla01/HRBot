@@ -108,10 +108,20 @@ def webhook():
             if 'message' in data['entry'][0]['messaging'][0]:
                 message = data['entry'][0]['messaging'][0]['message']
                 text = message['text']
+                query = 'q={}'.format(text)
                 
+                url = 'http://ec2-54-229-26-32.eu-west-1.compute.amazonaws.com:5000/parse?'\
+                '{}'.format(query)
+	                                                  
                 chat_message = search_keyword(text)
 
                 if chat_message:
+                    
+                    
+                    
+                    
+                    
+                    
                     # if found keyword, reply with chat stuff
                     message = send_text(sender, chat_message)
                     send_message(message)
