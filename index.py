@@ -100,8 +100,30 @@ def webhook():
                 text = message['text']
 		print text
 		
-		_return = send_hr_info(sender, some_text=text)
-		return 'Ok'
+		some_text = kwargs.pop('some_text', None)	
+    	        query = 'q={}'.format(text)
+	        print "before URL"
+	        print query
+
+	        url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
+                      '{}'.format(query)
+
+	    	print (url)
+		r = requests.get(url)
+   		response = r.json()
+		print(response)
+	
+        	intent = response['intent']
+    		intent_text = str(intent['confidence'])
+   		intent_float = float(intent_text)
+	
+		print "Intent float"
+		print intent_float
+	
+		if intent_float > 0.4:
+	    	    hr_message="I am great"
+	            message = send_text(sender, hr_message)
+	            send_message(message)
 
 
 
