@@ -43,13 +43,27 @@ def send_message(payload):
 
 
 def send_hr_info(sender, **kwargs):
+	
+	text = kwargs.pop('city_name', None)	
+    	query = 'q={}'.format(text)
+                
+        url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
+                '{}'.format(query)
+	        
+	print (url)
+	r = requests.get(url)
+   	response = r.json()
+        intent = response['intent']
+    	intent_text = str(intent['confidence'])
+   	intent_float = float(intent_text)
+		
+	if intent_float > 0.4:
+	    message = "This is great"
+	    send_message(message)		
+			
+    	print(response)
 
-    r = requests.get(hr_text)
-    response = r.json()
-
-    print(response)
-
-    if 'cod' in response:
+    	if 'cod' in response:
         if response['cod'] != 200:
             return 'error'
 
@@ -108,31 +122,10 @@ def webhook():
             if 'message' in data['entry'][0]['messaging'][0]:
                 message = data['entry'][0]['messaging'][0]['message']
                 text = message['text']
-                query = 'q={}'.format(text)
-                
-                url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
-                '{}'.format(query)
-	        
-		print (url)
-		r = requests.get(url)
-   		response = r.json()
-                
-		
-		intent = response['intent']
-    		
-		intent_text = str(intent['confidence'])
-   		intent_float = float(intent_text)
-		
-		if intent_float > 0.5:
-		    message = "This is great"
-		    send_message(message)		
-		
-		
+               
 		chat_message = search_keyword(text)
 
                 if chat_message:
-                    
-
                     # if found keyword, reply with chat stuff
                     message = send_text(sender, chat_message)
                     send_message(message)
