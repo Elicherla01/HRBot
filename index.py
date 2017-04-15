@@ -49,7 +49,7 @@ def send_message(payload):
 
 def send_hr_info(sender, **kwargs):
  
-    	text = kwargs.pop('some_text', None)	
+    	some_text = kwargs.pop('some_text', None)	
     	query = 'q={}'.format(text)
 	print "before URL"
 	print query
@@ -99,16 +99,8 @@ def webhook():
 		
 		_return = send_hr_info(sender, some_text=text)
 		return 'Ok'
-               
-		chat_message = search_keyword(text)
 
-                if chat_message:
-                    # if found keyword, reply with chat stuff
-                    message = send_text(sender, chat_message)
-                    send_message(message)
-                else:
-                    message = send_text(sender, get_message('i_do_not_know'))
-                    send_message(message)
+
 
         except Exception as e:
             print(traceback.format_exc())
