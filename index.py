@@ -133,7 +133,7 @@ def webhook():
 				message = send_text(sender, hr_message)
 				send_message(message)
 
-        return "ok", 200
+    
 
         except Exception as e:
             print(traceback.format_exc())
