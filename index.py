@@ -66,6 +66,8 @@ def send_hr_info(sender, **kwargs):
     	intent_text = str(intent['confidence'])
    	intent_float = float(intent_text)
 	
+	print "intent float" + intent_float
+	
 	if intent_float > 0.4:
 	    hr_message="I am great"
 	    message = send_text(sender, hr_message)
