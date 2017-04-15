@@ -1,6 +1,7 @@
 import os
 import traceback
 import json
+import sys
 import requests
 
 from flask import Flask, request
@@ -142,6 +143,10 @@ def webhook():
             return request.args.get('hub.challenge')
         return "Wrong Verify Token"
     return "Nothing"
+
+def log(message):  # simple wrapper for logging to stdout on heroku
+    print str(message)
+    sys.stdout.flush()
 
 if __name__ == '__main__':
     app.run(debug=True)
