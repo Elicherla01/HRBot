@@ -68,8 +68,8 @@ def send_hr_info(sender, **kwargs):
 	    send_message(message)
 		
 	
-	hr_message="I am great too"
-	message = send_text(sender, hr_message)
+	#hr_message="I am great too"
+	#message = send_text(sender, hr_message)
         
         send_message(message)
         return None
@@ -91,6 +91,7 @@ def webhook():
             if 'message' in data['entry'][0]['messaging'][0]:
                 message = data['entry'][0]['messaging'][0]['message']
                 text = message['text']
+		print text
 		
 		_return = send_hr_info(sender, some_text=text)
 		return 'Ok'
