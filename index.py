@@ -64,8 +64,8 @@ def send_hr_info(sender, **kwargs):
     	print(response)
 
     	if 'cod' in response:
-        if response['cod'] != 200:
-            return 'error'
+            if response['cod'] != 200:
+                return 'error'
 
                         
 
