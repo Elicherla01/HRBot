@@ -63,11 +63,14 @@ def send_hr_info(sender, **kwargs):
    	intent_float = float(intent_text)
 	
 	if intent_float > 0.4:
-	    message = "This is inside API"
+	    hr_message="I am great"
+	    message = send_text(sender, hr_message)
 	    send_message(message)
 		
-
-        message = "This is outside API"
+	
+	hr_message="I am great too"
+	message = send_text(sender, hr_message)
+        
         send_message(message)
         return None
 
