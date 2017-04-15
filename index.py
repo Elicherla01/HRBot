@@ -104,8 +104,7 @@ def webhook():
 
                 for entry in data["entry"]:
             	    for messaging_event in entry["messaging"]:
-
-                        if messaging_event.get("message"):  # someone sent us a message
+						if messaging_event.get("message"):  # someone sent us a message
 
                     	    sender = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                             recipient = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
@@ -122,8 +121,8 @@ def webhook():
 		           			print text
 		
 			
-    	                    query = 'q={}'.format(text)
-	                   	    print "before URL"
+    	                   	query = 'q={}'.format(text)
+							print "before URL"
 	                   		print query
 
 	                   		url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
