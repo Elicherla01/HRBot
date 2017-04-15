@@ -114,7 +114,7 @@ def webhook():
                 '{}'.format(query)
 	        
 		print (url)
-		r = requests.get(url1)
+		r = requests.get(url)
    		response = r.json()
                 
 		
