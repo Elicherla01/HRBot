@@ -107,9 +107,9 @@ def webhook():
 
                         if messaging_event.get("message"):  # someone sent us a message
 
-                    sender = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    recipient = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    text = messaging_event["message"]["text"]  # the message's text
+                    	    sender = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                            recipient = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                            text = messaging_event["message"]["text"]  # the message's text
 
 
 
@@ -119,32 +119,32 @@ def webhook():
 #            if 'message' in data['entry'][0]['messaging'][0]:
 #                message = data['entry'][0]['messaging'][0]['message']
 #                text = message['text']
-		   print text
+		           			print text
 		
 			
-    	           query = 'q={}'.format(text)
-	           print "before URL"
-	           print query
+    	                    query = 'q={}'.format(text)
+	                   	    print "before URL"
+	                   		print query
 
-	           url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
-                      '{}'.format(query)
+	                   		url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
+                                '{}'.format(query)
 
-	    	   print (url)
-		   r = requests.get(url)
-   		   response = r.json()
-		   print(response)
+	    	           		print (url)
+		   					r = requests.get(url)
+   		   					response = r.json()
+		   					print(response)
 	
-        	   intent = response['intent']
-    		   intent_text = str(intent['confidence'])
-   		   intent_float = float(intent_text)
+        	   				intent = response['intent']
+    		   				intent_text = str(intent['confidence'])
+   		   					intent_float = float(intent_text)
 	
-		   print "Intent float"
-		   print intent_float
+		   					print "Intent float"
+		   					print intent_float
 	
-		   if intent_float > 0.4:
-	    	       hr_message="I am great"
-	               message = send_text(sender, hr_message)
-	               send_message(message)
+							if intent_float > 0.4:
+								hr_message="I am great"
+								message = send_text(sender, hr_message)
+								send_message(message)
 
         return "ok", 200
 
