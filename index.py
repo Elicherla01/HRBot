@@ -39,6 +39,8 @@ def send_text(sender, text):
 
 
 def send_message(payload):
+    print "before calling FB URL"
+    print payload
     requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + token, json=payload)
 
 
