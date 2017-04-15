@@ -69,7 +69,7 @@ def send_hr_info(sender, **kwargs):
 	print "Intent float"
 	print intent_float
 	
-	if intent_float > 0.4:
+	if intent_float > 0.8:
 	    hr_message="I am great"
 	    message = send_text(sender, hr_message)
 	    send_message(message)
