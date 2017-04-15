@@ -67,9 +67,9 @@ def send_hr_info(sender, **kwargs):
 	    send_message(message)
 		
 
-       message = "This is outside API"
-       send_message(payload)
-       return None
+        message = "This is outside API"
+        send_message(message)
+        return None
 
 ## Ravi updates end
 
