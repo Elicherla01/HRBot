@@ -50,7 +50,7 @@ def send_message(payload):
 def send_hr_info(sender, **kwargs):
  
     	some_text = kwargs.pop('some_text', None)	
-    	query = 'q={}'.format(text)
+    	query = 'q={}'.format(some_text)
 	print "before URL"
 	print query
 
