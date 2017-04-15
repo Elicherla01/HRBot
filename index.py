@@ -42,35 +42,38 @@ def send_message(payload):
     requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + token, json=payload)
 
 
+
+## Ravi Updates start
+
 def send_hr_info(sender, **kwargs):
-	
-	text = kwargs.pop('some_text', None)	
+ 
+    	text = kwargs.pop('some_text', None)	
     	query = 'q={}'.format(text)
-                
-        url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
+
+	url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
                 '{}'.format(query)
-	        
-	print (url)
+
+    	print (url)
 	r = requests.get(url)
    	response = r.json()
+	print(response)
+	
         intent = response['intent']
     	intent_text = str(intent['confidence'])
    	intent_float = float(intent_text)
-		
+	
 	if intent_float > 0.4:
 	    message = "This is inside API"
-	    send_message(message)		
-			
-    	print(response)
+	    send_message(message)
+		
 
-    	if 'cod' in response:
-            if response['cod'] != 200:
-                return 'error'
+       message = "This is outside API"
+       send_message(payload)
+       return None
 
-          
-	message = "This is outside API"
-    	send_message(message)
-    	return None
+## Ravi updates end
+
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -85,6 +88,9 @@ def webhook():
             if 'message' in data['entry'][0]['messaging'][0]:
                 message = data['entry'][0]['messaging'][0]['message']
                 text = message['text']
+		
+		_return = send_hr_info(sender, some_text=text)
+		return 'Ok'
                
 		chat_message = search_keyword(text)
 
