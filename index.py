@@ -110,18 +110,29 @@ def webhook():
                 text = message['text']
                 query = 'q={}'.format(text)
                 
-                url = 'http://ec2-54-229-26-32.eu-west-1.compute.amazonaws.com:5000/parse?'\
+                url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
                 '{}'.format(query)
-	                                                  
-                chat_message = search_keyword(text)
+	        
+		print (url)
+		r = requests.get(url1)
+   		response = r.json()
+                
+		
+		intent = response['intent']
+    		
+		intent_text = str(intent['confidence'])
+   		intent_float = float(intent_text)
+		
+		if intent_float > 0.5:
+		    message = "This is great"
+		    send_message(message)		
+		
+		
+		chat_message = search_keyword(text)
 
                 if chat_message:
                     
-                    
-                    
-                    
-                    
-                    
+
                     # if found keyword, reply with chat stuff
                     message = send_text(sender, chat_message)
                     send_message(message)
