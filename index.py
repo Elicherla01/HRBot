@@ -39,7 +39,7 @@ def send_text(sender, text):
 
 
 def send_message(payload):
-    print "before calling FB URL"
+    
     print payload
     requests.post('https://graph.facebook.com/v2.6/me/messages/?access_token=' + token, json=payload)
 
@@ -89,7 +89,7 @@ def webhook():
         try:
             data = json.loads(request.data.decode())
             sender = data['entry'][0]['messaging'][0]['sender']['id']
-
+	    print "in POST data"
             print(data)
 
             if 'message' in data['entry'][0]['messaging'][0]:
