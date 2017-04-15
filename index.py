@@ -100,7 +100,7 @@ def webhook():
                 text = message['text']
 		print text
 		
-		some_text = kwargs.pop('some_text', None)	
+			
     	        query = 'q={}'.format(text)
 	        print "before URL"
 	        print query
