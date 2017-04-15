@@ -44,7 +44,7 @@ def send_message(payload):
 
 def send_hr_info(sender, **kwargs):
 	
-	text = kwargs.pop('city_name', None)	
+	text = kwargs.pop('some_text', None)	
     	query = 'q={}'.format(text)
                 
         url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
@@ -58,7 +58,7 @@ def send_hr_info(sender, **kwargs):
    	intent_float = float(intent_text)
 		
 	if intent_float > 0.4:
-	    message = "This is great"
+	    message = "This is inside API"
 	    send_message(message)		
 			
     	print(response)
@@ -67,47 +67,10 @@ def send_hr_info(sender, **kwargs):
             if response['cod'] != 200:
                 return 'error'
 
-                        
-
-    payload = send_attachment(sender,
-                              'template',
-                              {
-                                  "template_type": "list",
-                                  "top_element_style": "large",
-                                  "elements": elements,
-                                  "buttons": [
-                                      {
-                                          "title": "Weather",
-                                          "type": "postback",
-                                          "payload": "do_it_again"
-                                      }
-
-                                  ]
-                              })
-
-    payload1 = send_attachment(sender,
-                              'template',
-                              {
-                                 "template_type":"button",
-                                 "text":"What do you want to do next?",
-                                 "buttons":[
-                                    {
-                                        "type":"web_url",
-                                        "url":"https://www.tesco.com",
-                                        "title":"Show Website"
-                                    },
-                                    {
-                                        "type":"postback",
-                                        "title":"weather",
-                                        "payload":"do_it_again"
-                                    }
-                                    ]
-                                   })
-
-
-
-    send_message(payload)
-    return None
+          
+	message = "This is outside API"
+    	send_message(message)
+    	return None
 
 
 @app.route('/', methods=['GET', 'POST'])
