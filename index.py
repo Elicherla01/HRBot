@@ -49,6 +49,8 @@ def send_hr_info(sender, **kwargs):
  
     	text = kwargs.pop('some_text', None)	
     	query = 'q={}'.format(text)
+	print "before URL"
+	print query
 
 	url = 'http://ec2-34-253-183-190.eu-west-1.compute.amazonaws.com:5000//parse?'\
                 '{}'.format(query)
