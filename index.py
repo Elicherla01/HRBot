@@ -129,11 +129,21 @@ def webhook():
 		   	    print "Intent float"
 		   	    print intent_float
 	
-			    if intent_float > 0.4:
+			    if intent_float > 1.0:
 			        hr_message="I am great"
 				message = send_text(sender, hr_message)
 				send_message(message)
+			    
+			    name_text = str(intent['name'])
+   		   	    if name_text == 'OJP_criteria':
+				hr_message="All colleagues are eligible to apply for roles posted in OJP. Manager endorsement is required to support application. Initially to manage the scale of engineering and infrastructure SDE I and SE I roles, we will be prioritising applications from PSE colleagues. Eventually it will be open to all colleagues."
+				message = send_text(sender, hr_message)
+				send_message(message)
 
+   		   	    if name_text == 'greet':
+				hr_message="Glad to met you"
+				message = send_text(sender, hr_message)
+				send_message(message)	
     
 
         except Exception as e:
