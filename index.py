@@ -154,9 +154,32 @@ def webhook():
 				hr_message="The Open Job will be posted as and when vacancies are identified and agreed to be released."
 				message = send_text(sender, hr_message)
 				send_message(message)	
-				
+			    
+			    elif name_text == 'OJP_salary':
+				hr_message="Typically, lateral moves will not require any change in salary for the colleague. Exceptions will be reviewed on a case to case basis."
+				message = send_text(sender, hr_message)
+				send_message(message)
+			    
+			    elif name_text == 'OJP_designation':
+				hr_message="Initially to manage the scale of engineering and infrastructure SDE I and SE I roles, we will be prioritising applications from PSE colleagues. Eventually it will be open to all colleagues."
+				message = send_text(sender, hr_message)
+				send_message(message)	
+			    
+			    elif name_text == 'OJP_role':
+				hr_message="Yes. You will continue to play the current role, as and when a similar vacancy arises you will be assigned to that role."
+				message = send_text(sender, hr_message)
+				send_message(message)	
     
-
+			    elif name_text == 'OJP_assesment':
+				hr_message="Assessments are designed to gauge the capability of a colleague which would be required as per the career framework. The assessment for internal colleagues will be the same as that for external candidates. Typically, the assessment will cover the following aspects: Technical assessments - Assesses technical skills for target job, e.g. coding and designing for an engineer, or prioritisation for a product manager. Leadership interview - Interview based on standard Tesco Leadership skills. Hiring Manager interview - A ‘fit’ interview for a hiring manager to help determine who is the best candidate for their role"
+				message = send_text(sender, hr_message)
+				send_message(message)
+				
+			    elif name_text == 'OJP_multiple':
+				hr_message="Your line manager endorsement is required for you to apply for the role. You must discuss in detail the role requirement (JD), the skill requirement (Skill matrix) and your career aspirations, with your manager. If your manager and you agree that you have all the skills required for the role applied for, then your manager will provide the required endorsement. This discussion is expected to help you decide which position would be most suitable role for you."
+				message = send_text(sender, hr_message)
+				send_message(message)
+				
         except Exception as e:
             print(traceback.format_exc())
     elif request.method == 'GET':
