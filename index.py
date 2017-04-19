@@ -144,6 +144,11 @@ def webhook():
 				hr_message="Glad to met you"
 				message = send_text(sender, hr_message)
 				send_message(message)	
+				
+			    if name_text == 'OJP_approval':
+				hr_message="Your line manager endorsement is required for you to apply for the role. You must discuss in detail the role requirement (JD), the skill requirement (Skill matrix) and your career aspirations, with your manager. During this discussion your manager will help you identify skill gaps and work on developing your personal development plan that will help you to achieve your aspirational role. If your manager and you agree that you have all the skills required for the role applied for, then your manager will provide the required endorsement."
+				message = send_text(sender, hr_message)
+				send_message(message)
     
 
         except Exception as e:
