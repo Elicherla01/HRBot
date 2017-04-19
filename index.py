@@ -171,7 +171,7 @@ def webhook():
 				send_message(message)	
     
 			    elif name_text == 'OJP_assesment':
-				hr_message="Assessments are designed to gauge the capability of a colleague which would be required as per the career framework. The assessment for internal colleagues will be the same as that for external candidates. Typically, the assessment will cover the following aspects: Technical assessments - Assesses technical skills for target job, e.g. coding and designing for an engineer, or prioritisation for a product manager. Leadership interview - Interview based on standard Tesco Leadership skills. Hiring Manager interview - A ‘fit’ interview for a hiring manager to help determine who is the best candidate for their role"
+				hr_message="Assessments are designed to gauge the capability of a colleague which would be required as per the career framework. The assessment for internal colleagues will be the same as that for external candidates. Typically, the assessment will cover the following aspects: Technical assessments - Assesses technical skills for target job, e.g. coding and designing for an engineer, or prioritisation for a product manager. Leadership interview - Interview based on standard Tesco Leadership skills. Hiring Manager interview - A fit interview for a hiring manager to help determine who is the best candidate for their role"
 				message = send_text(sender, hr_message)
 				send_message(message)
 				
